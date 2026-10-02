@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Summariser settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="../icons/icon-48.png" alt="" width="36" height="36" />
+        <div>
+          <h1>Video Summariser</h1>
+          <p class="muted">Changes save automatically. <span id="saved" class="saved" aria-live="polite"></span></p>
+        </div>
+      </header>
+
+      <section>
+        <h2>How the transcript is added</h2>
+        <label class="choice">
+          <input type="radio" name="delivery" value="file" />
+          <span><strong>Attach as a .txt file</strong> (recommended)<br /><span class="muted">Keeps the message box clean. Long videos fit easily.</span></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="delivery" value="inline" />
+          <span><strong>Paste the text into the message</strong><br /><span class="muted">Use this if ChatGPT seems to skim attached files instead of reading them in full.</span></span>
+        </label>
+      </section>
+
+      <section>
+        <h2>Transcript</h2>
+        <label class="row"><input type="checkbox" id="timestamps" /><span>Include timestamps (lets the summary cite <code>[12:34]</code>)</span></label>
+        <label class="row"><input type="checkbox" id="includeDescription" /><span>Include the video description (often has chapters and links)</span></label>
+        <label class="row">
+          Preferred caption language
+          <input type="text" id="preferredLang" class="lang" maxlength="10" spellcheck="false" />
+          <span class="muted">e.g. <code>en</code>, <code>hi</code>, <code>es</code>. If there are no captions in it, the video's spoken language is used.</span>
+        </label>
+      </section>
+
+      <section>
+        <h2>Behaviour</h2>
+        <label class="row"><input type="checkbox" id="autoStartOnPaste" /><span>Start as soon as I paste a link</span></label>
+        <label class="row"><input type="checkbox" id="autoSend" /><span>Send the message automatically (otherwise you review it and press Enter)</span></label>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>Prompt</h2>
+          <button id="reset-prompt" type="button" class="link">Reset to default</button>
+        </div>
+        <textarea id="promptTemplate" rows="24" spellcheck="false"></textarea>
+        <p class="muted">Placeholders filled in for each video:</p>
+        <dl id="placeholders"></dl>
+      </section>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,270 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #f5f5f7;
+  --border: #dcdce2;
+  --text: #17171c;
+  --muted: #6b6b76;
+  --accent: #5b4bf5;
+  --accent-hover: #4a3be0;
+  --accent-text: #ffffff;
+  --focus: rgba(91, 75, 245, 0.35);
+  --ok: #157347;
+  --error: #b42318;
+  --error-bg: #fef1f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1b20;
+    --surface: #26262d;
+    --border: #3a3a44;
+    --text: #ececf1;
+    --muted: #9d9daa;
+    --accent: #7d70ff;
+    --accent-hover: #9389ff;
+    --accent-text: #ffffff;
+    --focus: rgba(125, 112, 255, 0.45);
+    --ok: #4cc38a;
+    --error: #ff8a80;
+    --error-bg: #3a2222;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px 0;
+}
+
+h1 {
+  flex: 1;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+main {
+  padding: 10px 14px 12px;
+}
+
+.target {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.target strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 13.5px;
+}
+
+input[type='text']:focus,
+button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--focus);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn.secondary {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.btn.secondary:hover {
+  border-color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.status {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 10px;
+  padding: 9px 11px;
+  border-radius: 9px;
+  background: var(--surface);
+}
+
+.status::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.status.busy::before {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.status.done::before {
+  background: var(--ok);
+}
+
+.status.error {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.status.error::before {
+  background: var(--error);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+section h2 {
+  margin: 14px 0 6px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.video {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.video:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+.video:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.video svg {
+  flex: none;
+  color: var(--muted);
+}
+
+.video span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 14px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
